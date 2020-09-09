@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './redux/reducers';
 import NavigationService from './NavigationService';
-import DrawerNavigator from './navigators/DrawerNavigator';
+import RootNavigator from './navigators/RootNavigator';
 
 export const store = createStore(reducers, {}, applyMiddleware(thunk));
 
@@ -18,7 +18,7 @@ class App extends Component {
                         NavigationService.setTopLevelNavigator(navigatorRef);
                     }}
                 >
-                    <DrawerNavigator />
+                    <RootNavigator />
                 </NavigationContainer>
             </Provider>
         );
