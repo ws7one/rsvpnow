@@ -70,7 +70,7 @@ class List extends Component {
                 />
                 {isLoading ? (
                     <View style={styles.container}>
-                        <ActivityIndicator size="large" />
+                        <ActivityIndicator size="large" color={theme.grey1} />
                     </View>
                 ) : (
                         <FlatList
@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1
+        justifyContent: 'center'
     },
     cardContainer: {
         width: '100%',

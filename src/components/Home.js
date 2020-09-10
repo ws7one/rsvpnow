@@ -57,7 +57,9 @@ class Home extends Component {
                         color: theme.white,
                         onPress: () => this.props.navigation.openDrawer()
                     }}
-                    centerComponent={{ text: 'RSVP', style: { color: theme.white } }}
+                    centerComponent={{
+                        text: 'RSVP', style: { color: theme.white, fontSize: 20 }
+                    }}
                 />
                 {!!message && (
                     <View
@@ -316,9 +318,19 @@ class Home extends Component {
                     buttonStyle={{ backgroundColor: theme.darkblue }}
                     disabled={buttonDisabled}
                     disabledStyle={{ backgroundColor: theme.grey5 }}
-                    onPress={() => this.props.submitRsvp({
-                        name, dob, city, employed, address, guestsCount
-                    })}
+                    onPress={() => {
+                        this.props.submitRsvp({
+                            name, dob, city, employed, address, guestsCount
+                        });
+                        this.setState({
+                            name: '',
+                            dob: new Date(),
+                            city: '',
+                            employed,
+                            address: '',
+                            guestsCount: 0
+                        });
+                    }}
                     loading={isLoading}
                 />
             </View >

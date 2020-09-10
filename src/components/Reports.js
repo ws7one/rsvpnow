@@ -49,7 +49,7 @@ class Reports extends Component {
                 />
                 {this.props.list.isLoading ? (
                     <View style={styles.container}>
-                        <ActivityIndicator size="large" />
+                        <ActivityIndicator size="large" color={theme.grey1} />
                     </View>
                 ) : (
                         <View
