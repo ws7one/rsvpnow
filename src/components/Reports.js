@@ -61,7 +61,7 @@ class Reports extends Component {
                             }}
                         >
                             <View style={styles.reportContainer}>
-                                <AgeRangePie data={ageRange} loading={isLoading} />
+                                <LocalitiesPie data={localitiesCount} loading={isLoading} />
                             </View>
                             <View style={styles.reportContainer}>
                                 <EmployedCount data={employedCount} loading={isLoading} />
@@ -70,7 +70,7 @@ class Reports extends Component {
                                 <AvgGroupSize data={avgGrpSize} loading={isLoading} />
                             </View>
                             <View style={styles.reportContainer}>
-                                <LocalitiesPie data={localitiesCount} loading={isLoading} />
+                                <AgeRangePie data={ageRange} loading={isLoading} />
                             </View>
                         </View>
                     )}
@@ -87,8 +87,9 @@ const styles = StyleSheet.create({
     },
     reportContainer: {
         width: '50%',
-        height: (screenHeight - 60) / 2,
+        height: (screenHeight - 100) / 2,
         borderWidth: 1,
+        borderColor: theme.grey5,
         justifyContent: 'center',
         alignItems: 'center'
     }

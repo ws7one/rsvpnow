@@ -46,3 +46,17 @@ export const LIST_OF_LOCALITIES = [
         label: 'London'
     },
 ];
+
+export const pieColors = [
+    '#00876c',
+    '#489c6f',
+    '#74b073',
+    '#a0c379',
+    '#ccd583',
+    '#f8e693',
+    '#f5c775',
+    '#f2a760',
+    '#ec8653',
+    '#e2634f',
+    '#d43d51',
+];

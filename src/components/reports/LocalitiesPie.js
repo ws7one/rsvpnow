@@ -6,14 +6,16 @@ import {
     Text
 } from 'react-native';
 import { PieChart } from 'react-native-svg-charts';
-import { randomColor } from '../../constants/utils';
 import { commonStyle } from '../common/styles';
+import { pieColors } from '../../constants/enumerations';
+import theme from '../../theme';
 
 class LocalitiesPie extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            containerWidth: null
+            containerWidth: null,
+            selectedPie: 'Mumbai'
         };
     }
 
@@ -21,25 +23,29 @@ class LocalitiesPie extends Component {
         const { loading, data } = this.props;
         const piedata = [];
         if (data) {
-            Object.keys(data).forEach(key => {
-                piedata.push({
+            Object.keys(data).forEach((key, index) => {
+                const newPie = {
                     key,
                     value: data[key],
-                    svg: { fill: randomColor() },
-
-                });
+                    svg: { fill: pieColors[index] },
+                    onPress: () => this.setState({ selectedPie: key })
+                };
+                if (this.state.selectedPie === key) {
+                    newPie.arc = { outerRadius: '130%', cornerRadius: 10 };
+                }
+                piedata.push(newPie);
             });
         }
         return (
-            <View style={styles.container}>
-                <View
-                    onLayout={event => {
-                        this.setState({
-                            containerWidth: event.nativeEvent.layout.width
-                        });
-                    }}
-                    style={commonStyle.reportTitleContainerStyle}
-                >
+            <View
+                style={styles.container}
+                onLayout={event => {
+                    this.setState({
+                        containerWidth: event.nativeEvent.layout.width
+                    });
+                }}
+            >
+                <View style={commonStyle.reportTitleContainerStyle}>
                     <Text style={commonStyle.reportTitleTextStyle}>
                         Guest hailed from
                     </Text>
@@ -70,6 +76,16 @@ class LocalitiesPie extends Component {
                             />
                         </View>
                     )}
+                {this.state.selectedPie && data && !loading && (
+                    <View style={commonStyle.reportTitleContainerStyle}>
+                        <Text style={{ fontSize: 16, color: theme.grey3 }}>
+                            {this.state.selectedPie}:{' '}
+                            <Text style={{ color: theme.grey0, fontWeight: 'bold' }}>
+                                {data[this.state.selectedPie]}
+                            </Text>
+                        </Text>
+                    </View>
+                )}
             </View>
         );
     }

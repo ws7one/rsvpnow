@@ -19,15 +19,15 @@ class AvgGroupSize extends Component {
     render() {
         const { loading, data } = this.props;
         return (
-            <View style={styles.container}>
-                <View
-                    onLayout={event => {
-                        this.setState({
-                            containerWidth: event.nativeEvent.layout.width
-                        });
-                    }}
-                    style={commonStyle.reportTitleContainerStyle}
-                >
+            <View
+                style={styles.container}
+                onLayout={event => {
+                    this.setState({
+                        containerWidth: event.nativeEvent.layout.width
+                    });
+                }}
+            >
+                <View style={commonStyle.reportTitleContainerStyle}>
                     <Text style={commonStyle.reportTitleTextStyle}>
                         Average Group Size
                     </Text>
