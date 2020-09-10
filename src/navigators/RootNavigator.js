@@ -14,7 +14,11 @@ export default function RootNavigator() {
                 name={ROOT}
                 options={{ headerShown: false }}
             />
-            <Stack.Screen component={Details} name={DETAILS} />
+            <Stack.Screen
+                component={Details}
+                name={DETAILS}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     );
 }

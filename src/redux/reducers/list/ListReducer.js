@@ -1,12 +1,14 @@
 import {
     FETCHING_ATTENDEES,
     ATTENDEES_FETCH_FAILURE,
-    ATTENDEES_FETCH_SUCCESS
+    ATTENDEES_FETCH_SUCCESS,
+    SET_ATTENDEE
 } from '../../ActionTypes';
 
 const INITIAL_STATE = {
     isLoading: false,
-    attendees: []
+    attendees: [],
+    selectedAttendee: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -29,6 +31,12 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 isLoading: false,
                 attendees: action.payload
+            };
+
+        case SET_ATTENDEE:
+            return {
+                ...state,
+                selectedAttendee: action.attendee
             };
 
         default:

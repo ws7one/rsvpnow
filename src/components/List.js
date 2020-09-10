@@ -25,6 +25,7 @@ class List extends Component {
     renderAttendeeCard = (item) => (
         <TouchableOpacity
             style={styles.cardContainer}
+            onPress={() => this.props.setAttendee(item)}
         >
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Icon

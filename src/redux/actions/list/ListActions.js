@@ -7,11 +7,14 @@ import {
     AVG_GROUP_DATA_SUCCESS,
     EMPLOYED_COUNT_SUCCESS,
     CALCULATING_REPORTS,
-    REPORTS_FAILED
+    REPORTS_FAILED,
+    SET_ATTENDEE
 } from '../../ActionTypes';
 import { getResource } from '../../../services/ApiService';
 import { getAttendeesEndpoint } from '../../../services/Endpoints';
 import { AGE_RANGES, LIST_OF_LOCALITIES } from '../../../constants/enumerations';
+import NavigationService from '../../../NavigationService';
+import { DETAILS } from '../../../navigators/ScreenNames';
 
 export const getAttendees = () => dispatch => {
     dispatch({ type: FETCHING_ATTENDEES });
@@ -29,6 +32,11 @@ export const getAttendees = () => dispatch => {
                 type: ATTENDEES_FETCH_FAILURE
             });
         });
+};
+
+export const setAttendee = (attendee) => dispatch => {
+    dispatch({ type: SET_ATTENDEE, attendee });
+    NavigationService.navigate(DETAILS);
 };
 
 export const calculateReports = (data = null) => (dispatch, getState) => {
