@@ -1,4 +1,7 @@
 export const CHANGE_MESSAGE = 'change_message';
+export const IS_SUBMITTING_RSVP = 'is_submitting_rsvp';
+export const SUBMIT_RSVP_SUCCESS = 'submit_rsvp_success';
+export const SUBMIT_RSVP_FAILURE = 'submit_rsvp_failure';
 
 export const FETCHING_ATTENDEES = 'fetching_attendees';
 export const ATTENDEES_FETCH_SUCCESS = 'attendees_fetch_success';
