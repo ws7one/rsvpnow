@@ -15,27 +15,24 @@ import { commonStyle } from './common/styles';
 
 class List extends Component {
     componentDidMount() {
-        if (this.props.list.attendees.length === 0) { this.props.getAttendees(); }
+        if (this.props.list.attendees.length === 0) {
+            this.props.getAttendees();
+        } else {
+            this.props.calculateReports();
+        }
     }
 
     renderAttendeeCard = (item) => (
         <TouchableOpacity
-            style={{
-                width: '100%',
-                // borderWidth: 1,
-                borderRadius: 5,
-                elevation: 1,
-                shadowOffset: { width: 5, height: 5 },
-                shadowColor: theme.grey5,
-                shadowOpacity: 0.5,
-                backgroundColor: theme.white,
-                marginBottom: 10,
-                padding: 10
-            }}
+            style={styles.cardContainer}
         >
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Icon name={item.number_of_guests > 0 ? 'people' : 'person'} type="ionicon" />
-                <Text style={{ fontSize: 24, fontWeight: 'bold', marginLeft: 10 }}>
+                <Icon
+                    name={item.number_of_guests > 0 ? 'people' : 'person'}
+                    type="ionicon"
+                    color={theme.grey1}
+                />
+                <Text style={styles.cardTitle}>
                     {item.name}{' '}
                     {item.number_of_guests > 0 &&
                         <Text style={{ fontSize: 16, fontWeight: 'normal' }}>
@@ -45,7 +42,7 @@ class List extends Component {
                 </Text>
             </View>
             <View>
-                <Text style={{ fontSize: 12, color: theme.grey3, marginLeft: 35, marginTop: 5 }}>
+                <Text style={styles.cardSubtitle}>
                     {item.address}, {item.locality}
                 </Text>
             </View>
@@ -100,7 +97,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 1
-    }
+    },
+    cardContainer: {
+        width: '100%',
+        borderRadius: 5,
+        elevation: 1,
+        shadowOffset: { width: 5, height: 5 },
+        shadowColor: theme.grey5,
+        shadowOpacity: 0.5,
+        backgroundColor: theme.white,
+        marginBottom: 10,
+        padding: 10
+    },
+    cardTitle: { fontSize: 24, fontWeight: 'bold', marginLeft: 10, color: theme.grey1 },
+    cardSubtitle: { fontSize: 12, color: theme.grey3, marginLeft: 35, marginTop: 5 }
 });
 
 const mapStateToProps = state => ({

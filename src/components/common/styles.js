@@ -13,4 +13,16 @@ export const commonStyle = StyleSheet.create({
         fontStyle: 'italic',
         color: theme.grey3
     },
+    reportTitleTextStyle: {
+        fontSize: 16,
+        color: theme.grey0,
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    reportTitleContainerStyle: {
+        height: 50,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
